@@ -58,7 +58,7 @@ public class BaseClass {
     }
 
     @BeforeMethod
-    public void appLaunch() throws InterruptedException, MalformedURLException {
+    public void appLaunch() {
         driver.activateApp(configReader.getPackageName());
 
     }

@@ -7,8 +7,6 @@ import java.util.Properties;
 public class ConfigReader {
     private String appiumServerUrl;
     private String platformVersion;
-    private String userName;
-    private String accessKey;
     private String udid;
     private String appPath;
     private String packageName;
@@ -23,8 +21,6 @@ public class ConfigReader {
             prop.load(fis);
             fis.close();
             appiumServerUrl = prop.getProperty("appiumServer");
-            userName = prop.getProperty("userName");
-            accessKey = prop.getProperty("accessKey");
             appPath = System.getProperty("user.dir") + "/" + prop.getProperty("appPath");
             packageName = prop.getProperty("packageName");
             appActivity = prop.getProperty("appActivity");
