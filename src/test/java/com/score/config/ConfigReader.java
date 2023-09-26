@@ -32,6 +32,7 @@ public class ConfigReader {
 
         } catch (
                 IOException e) {
+            System.out.println("Error reading config file.");
             e.printStackTrace();
         }
     }
