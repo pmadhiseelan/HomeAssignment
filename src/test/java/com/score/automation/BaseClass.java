@@ -3,6 +3,7 @@ package com.score.automation;
 import com.score.automation.pages.SetupPages;
 import com.score.config.ConfigReader;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -17,19 +18,12 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
 
-    public static AppiumDriver driver;
+    public static AppiumDriver<MobileElement> driver;
     public static ConfigReader configReader = new ConfigReader();
-    public String platformName = configReader.getPlatformName();
-
-    DesiredCapabilities caps = new DesiredCapabilities();
 
     @BeforeSuite
     public void setUp() throws MalformedURLException {
-        //DesiredCapabilities caps = new DesiredCapabilities();
-
-        // Set your BrowserStack credentials
-        //caps.setCapability("browserstack.user", configReader.getUserName());
-        //caps.setCapability("browserstack.key", configReader.getAccessKey());
+        DesiredCapabilities caps = new DesiredCapabilities();
 
         // Set the device capabilities and app information
         caps.setCapability(MobileCapabilityType.DEVICE_NAME,configReader.getDeviceName());
@@ -37,8 +31,6 @@ public class BaseClass {
         caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, configReader.getPlatformVersion());
 
         caps.setCapability("app", configReader.getAppPath()); // Replace with the URL or local path to your APK
-        //caps.setCapability("appium:appPackage", configReader.getPackageName());
-        //caps.setCapability("appium:appActivity", configReader.getAppActivity());
         caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, configReader.getPackageName());
         caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, configReader.getAppActivity());
 
@@ -47,7 +39,6 @@ public class BaseClass {
 
         // Initialize the Driver instance
         URL remoteURL = new URL(configReader.getAppiumServerUrl());
-        //driver = new AndroidDriver(remoteURL, caps);
         driver = new AndroidDriver<>(remoteURL, caps);
 
         //Set the implicit wait
@@ -60,7 +51,6 @@ public class BaseClass {
     @BeforeMethod
     public void appLaunch() {
         driver.activateApp(configReader.getPackageName());
-
     }
 
    @AfterMethod
