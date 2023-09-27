@@ -17,7 +17,6 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
-
     public static AppiumDriver<MobileElement> driver;
     public static ConfigReader configReader = new ConfigReader();
 
@@ -26,15 +25,15 @@ public class BaseClass {
         DesiredCapabilities caps = new DesiredCapabilities();
 
         // Set the device capabilities and app information
-        caps.setCapability(MobileCapabilityType.DEVICE_NAME,configReader.getDeviceName());
+        caps.setCapability(MobileCapabilityType.DEVICE_NAME, configReader.getDeviceName());
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, configReader.getPlatformName());
         caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, configReader.getPlatformVersion());
 
-        caps.setCapability("app", configReader.getAppPath()); // Replace with the URL or local path to your APK
+        caps.setCapability("app", configReader.getAppPath());
         caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, configReader.getPackageName());
         caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, configReader.getAppActivity());
 
-        caps.setCapability(MobileCapabilityType.UDID,configReader.getUdid());
+        caps.setCapability(MobileCapabilityType.UDID, configReader.getUdid());
         caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, configReader.getAutomationName());
 
         // Initialize the Driver instance
@@ -53,9 +52,9 @@ public class BaseClass {
         driver.activateApp(configReader.getPackageName());
     }
 
-   @AfterMethod
+    @AfterMethod
     public void tearDown() {
-      if (driver != null) {
+        if (driver != null) {
             driver.quit();
         }
     }

@@ -14,10 +14,11 @@ public class ConfigReader {
     private String appActivity;
     private String deviceName;
     private String automatioName;
-    public ConfigReader(){
+
+    public ConfigReader() {
         Properties prop = new Properties();
         try {
-            FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/config.properties");
+            FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config.properties");
             prop.load(fis);
             fis.close();
             appiumServerUrl = prop.getProperty("appiumServer");
@@ -41,12 +42,15 @@ public class ConfigReader {
     public String getAppiumServerUrl() {
         return appiumServerUrl;
     }
-    public String getDeviceName(){
+
+    public String getDeviceName() {
         return deviceName;
     }
+
     public String getPlatformName() {
         return platformName;
     }
+
     public String getPlatformVersion() {
         return platformVersion;
     }
@@ -59,15 +63,15 @@ public class ConfigReader {
         return packageName;
     }
 
-    public String getAppActivity(){
+    public String getAppActivity() {
         return appActivity;
     }
 
-    public String getUdid(){
+    public String getUdid() {
         return udid;
     }
 
-    public String getAutomationName(){
+    public String getAutomationName() {
         return automatioName;
     }
 

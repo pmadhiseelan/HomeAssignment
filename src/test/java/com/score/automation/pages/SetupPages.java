@@ -29,7 +29,7 @@ public class SetupPages extends BaseClass {
     @FindBy(id = "com.fivemobile.thescore:id/action_button_text")
     WebElement continue_BTN;
 
-   // Notifications Page
+    // Notifications Page
     @FindBy(id = "com.fivemobile.thescore:id/action_button_text")
     WebElement notifiDone_BTN;
 
@@ -43,7 +43,7 @@ public class SetupPages extends BaseClass {
     @FindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Leagues\"]/android.view.ViewGroup/android.widget.TextView")
     WebElement leaguesBottomNav_LNK;
 
-    public void setUpActionsClick(){
+    public void setUpActionsClick() {
         // Welcome Page
         getStarted_BTN.click();
 
@@ -58,14 +58,17 @@ public class SetupPages extends BaseClass {
 
         // Notifications Page
         notifiDone_BTN.click();
-        testUtil.waitForElementClickable(3, allowNotification_BTN, true );
+        testUtil.waitForElementClickable(3, allowNotification_BTN, true);
 
         // Landing Favourites Page
-        testUtil.waitForElementClickable(4, scoreBetDismissal_BTN, true );
+        testUtil.waitForElementClickable(4, scoreBetDismissal_BTN, true);
         leaguesBottomNav_LNK.click();
     }
 
-    public SetupPages(){
+    /**
+     * Initialize Page factory elements in constructor
+     */
+    public SetupPages() {
         PageFactory.initElements(driver, this);
     }
 

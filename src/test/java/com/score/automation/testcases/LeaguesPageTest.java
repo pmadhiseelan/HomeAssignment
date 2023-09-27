@@ -1,27 +1,24 @@
 package com.score.automation.testcases;
 
 import com.score.automation.BaseClass;
-import com.score.automation.pages.LeaguesDetailsPage;
 import com.score.automation.pages.LeaguesLandingPage;
+import com.score.automation.pages.LeaguesPage;
 import com.score.automation.utils.TestUtil;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LeaguesDetailsPageTest extends BaseClass {
+public class LeaguesPageTest extends BaseClass {
     LeaguesLandingPage leaguesLandingPage;
-    LeaguesDetailsPage leagueDetailsPage;
+    LeaguesPage leagueDetailsPage;
     TestUtil testUtil = new TestUtil();
-    public LeaguesDetailsPageTest(){
-        super();
-    }
 
     @DataProvider(name = "leagues")
-    public Object[] leagues(){
+    public Object[] leagues() {
         return new Object[]{"NBA"};
     }
 
     @Test(dataProvider = "leagues")
-    public void leaguesLandingTest_01(String league){
+    public void leaguesLandingTest_01(String league) {
         leaguesLandingPage = new LeaguesLandingPage();
 
         // Click on the League passed from Data Provider
